@@ -1,0 +1,47 @@
+﻿<Window x:Class="EduCenterWPF.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Вход в систему" Height="466" Width="450" 
+        WindowStartupLocation="CenterScreen">
+    <Border Padding="25" Background="{StaticResource BackgroundBrush}">
+        <Grid Margin="0,0,0,-15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок окна -->
+            <TextBlock Text="Образовательный центр" FontSize="24" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Row="0"
+                       Foreground="{StaticResource AccentBrush}"/>
+            
+            <TextBlock Text="Вход в систему" FontSize="18" 
+                       HorizontalAlignment="Center" Margin="0,0,0,20" Grid.Row="1"/>
+
+            <!-- Логин -->
+            <StackPanel Grid.Row="2" Margin="0,0,0,10">
+                <Label Content="Логин:" Padding="5,5,5,2"/>
+                <TextBox x:Name="txtUsername" Height="36" FontSize="14"/>
+            </StackPanel>
+
+            <!-- Пароль -->
+            <StackPanel Grid.Row="3" Margin="0,0,0,15">
+                <Label Content="Пароль:" Padding="5,5,5,2"/>
+                <PasswordBox x:Name="txtPassword" Height="36" FontSize="14"/>
+            </StackPanel>
+
+            <!-- Кнопка входа -->
+            <Button x:Name="btnLogin" Content="ВОЙТИ" Grid.Row="4" Height="50" Width="300" FontSize="14" FontWeight="Bold"
+                    Click="btnLogin_Click" Margin="0,0,0,15"/>
+
+            <!-- Ссылка на регистрацию -->
+            <TextBlock Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26">
+                Нет аккаунта? <Hyperlink Foreground="{StaticResource AccentBrush}" Click="RegisterLink_Click">Зарегистрироваться</Hyperlink>
+            </TextBlock>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,67 @@
+﻿<Window x:Class="EduCenterWPF.ClientDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Личный кабинет" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с информацией о пользователе -->
+        <Border Grid.Row="0" Background="{StaticResource SecondaryBackgroundBrush}" Padding="20,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Информация о клиенте -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Text="Добро пожаловать, " FontSize="18"/>
+                    <TextBlock x:Name="txtClientName" FontSize="18" FontWeight="Bold" 
+                              Foreground="{StaticResource AccentBrush}"/>
+                </StackPanel>
+                
+                <!-- Кнопка выхода справа -->
+                <Button x:Name="btnLogout" Grid.Column="1" Content="ВЫЙТИ" Width="120" 
+                       Height="50" FontSize="14" FontWeight="Bold" Click="btnLogout_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Основная часть - таблица заявок -->
+        <Border Grid.Row="1" Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Заголовок секции -->
+                <TextBlock Text="Мои заявки" FontSize="20" FontWeight="SemiBold" 
+                          Margin="0,0,0,15" Grid.Row="0"/>
+                
+                <!-- Таблица заявок клиента -->
+                <DataGrid x:Name="dgClientApplications" Grid.Row="1" AutoGenerateColumns="False" 
+                         CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single"
+                         BorderThickness="1" RowHeight="36" FontSize="14" Padding="0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ApplicationID}" Width="60"/>
+                        <DataGridTextColumn Header="Курс" Binding="{Binding Course}" Width="*" MinWidth="200"/>
+                        <DataGridTextColumn Header="Дата подачи" Binding="{Binding SubmissionDate, StringFormat=\{0:dd.MM.yyyy\}}" Width="150"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="150"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+
+        <!-- Нижняя панель с кнопками -->
+        <Border Grid.Row="2" Background="{StaticResource SecondaryBackgroundBrush}" Padding="20,15">
+            <Button x:Name="btnNewApplication" Content="ПОДАТЬ НОВУЮ ЗАЯВКУ" 
+                   Width="300" Height="50" FontSize="14" FontWeight="Bold"
+                   Click="btnNewApplication_Click"/>
+        </Border>
+    </Grid>
+</Window>
